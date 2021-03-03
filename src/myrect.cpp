@@ -3,6 +3,7 @@
 
 MyRect::MyRect()
 {
+   setRect(0,0,100,100);
 
 }
 
@@ -19,15 +20,18 @@ void MyRect::keyPressEvent(QKeyEvent *event)
     }
     else if(event->key() == Qt::Key_Down)
     {
-        setPos(x(),y()+10);
+       // Deactivate downward motion
+        //setPos(x(),y()+10);
     }
     else if(event->key() == Qt::Key_Up)
     {
-        setPos(x(),y()-10);
+       // Deactivate upward motion
+        //setPos(x(),y()-10);
     }
     else if(event->key() == Qt::Key_Space)
     {
         Bullet *bullet = new Bullet();
+        bullet->setPos(x(), y());
         scene()->addItem(bullet);
     }
 }

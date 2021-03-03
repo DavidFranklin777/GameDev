@@ -12,20 +12,26 @@ int main(int argc, char *argv[])
     QGraphicsScene* scene = new QGraphicsScene();
 
     //Create an item to put in the scene
-    MyRect* rect = new MyRect();
-    rect->setRect(0,0,100,100);
+    MyRect* player = new MyRect();
 
     //Add the item to the scene
-    scene->addItem(rect);
+    scene->addItem(player);
 
     //make rect focusable
-    rect->setFlag(QGraphicsItem::ItemIsFocusable);
-    rect->setFocus();
+    player->setFlag(QGraphicsItem::ItemIsFocusable);
+    player->setFocus();
 
     //add a view
     QGraphicsView *view = new QGraphicsView(scene);
-
+    view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    view->setFixedSize(800,600);
     view->show();
+
+    scene->setSceneRect(0,0,800,600);
+    // Placing the player in the middle bottom. Trial and error method
+    player->setPos(view->width()/2, view->height()-player->rect().height()-5);
+
 
     return a.exec();
 }
